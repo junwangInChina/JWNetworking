@@ -33,6 +33,10 @@
 
 @end
 
+@implementation JWNetworkingRequest
+
+@end
+
 #pragma mark - JWNetworkingService ---
 
 static JWNetworkingService *service;
