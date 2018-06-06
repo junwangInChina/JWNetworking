@@ -42,6 +42,8 @@ static JWNetworkingService *service;
 @property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
 @property (nonatomic, strong) NSMutableArray *baseServiceArray;
 @property (nonatomic, strong) NSMutableDictionary *errorHandlerDic;
+@property (nonatomic, strong) NSDictionary *headerDic;
+@property (nonatomic, strong) NSDictionary *paramDic;
 
 @end
 
@@ -128,11 +130,27 @@ static JWNetworkingService *service;
     NSString *tempFullURL = [NSString stringWithFormat:@"%@%@",tempService,[(JWNetworkingInput *)object requestAction]];
     // 请求参数
     NSMutableDictionary *tempParam = [(JWNetworkingInput *)object paramDicForRequest];
+    // 拼接通用参数
+    if (self.paramDic)
+    {
+        for (NSString *tempKey in self.paramDic.allKeys)
+        {
+            [tempParam setValue:self.paramDic[tempKey] forKey:tempKey];
+        }
+    }
     // 图片数据
     NSData *tempData = [(JWNetworkingInput *)object paramForImageData];
     
     // 请求头域
-    NSDictionary *tempHeader = [(JWNetworkingInput *)object paramDicForHeader];
+    NSMutableDictionary *tempHeader = [(JWNetworkingInput *)object paramDicForHeader];
+    // 拼接通用头域
+    if (self.headerDic)
+    {
+        for (NSString *tempKey in self.headerDic.allKeys)
+        {
+            [tempHeader setValue:self.headerDic[tempKey] forKey:tempKey];
+        }
+    }
     if (tempHeader && tempHeader.count > 0)
     {
         for (NSString *tempHeaderKey in [tempHeader allKeys])
@@ -253,6 +271,16 @@ static JWNetworkingService *service;
     if (errorCode.length == 0 || !errorHandler) return;
     
     [self.errorHandlerDic setObject:[errorHandler copy] forKey:errorCode];
+}
+
+- (void)configCommonHeader:(NSDictionary *)dic
+{
+    self.headerDic = dic;
+}
+
+- (void)configCommonParam:(NSDictionary *)dic
+{
+    self.paramDic = dic;
 }
 
 - (void)cancelAllRequest

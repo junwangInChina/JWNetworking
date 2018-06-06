@@ -39,6 +39,22 @@
 - (void)registerCommonErrorHandler:(JWNetworkingCommonErrorHandler)errorHandler
                          errorCode:(NSString *)errorCode;
 
+
+/**
+ 配置通用请求头域
+
+ @param dic 头域字典
+ */
+- (void)configCommonHeader:(NSDictionary *)dic;
+
+
+/**
+ 配置通用请求参数
+
+ @param dic 参数字典
+ */
+- (void)configCommonParam:(NSDictionary *)dic;
+
 /**
  *  取消所有请求
  */
