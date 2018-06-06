@@ -14,6 +14,9 @@
 		DA46671620C7751700CAA234 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA46671520C7751700CAA234 /* Assets.xcassets */; };
 		DA46671920C7751700CAA234 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA46671720C7751700CAA234 /* LaunchScreen.storyboard */; };
 		DA46671C20C7751700CAA234 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA46671B20C7751700CAA234 /* main.m */; };
+		DA46672D20C7814700CAA234 /* JWNetworkingService.m in Sources */ = {isa = PBXBuildFile; fileRef = DA46672C20C7814700CAA234 /* JWNetworkingService.m */; };
+		DA46673320C7821500CAA234 /* JWNetworkingServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA46673220C7821500CAA234 /* JWNetworkingServiceManager.m */; };
+		DA46673620C7822E00CAA234 /* JWNetworkingAccessorDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = DA46673520C7822E00CAA234 /* JWNetworkingAccessorDefine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,14 @@
 		DA46671820C7751700CAA234 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA46671A20C7751700CAA234 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA46671B20C7751700CAA234 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DA46672620C77A6900CAA234 /* JWNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWNetworking.h; sourceTree = "<group>"; };
+		DA46672A20C780E600CAA234 /* JWNetworkingDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWNetworkingDefine.h; sourceTree = "<group>"; };
+		DA46672B20C7814700CAA234 /* JWNetworkingService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWNetworkingService.h; sourceTree = "<group>"; };
+		DA46672C20C7814700CAA234 /* JWNetworkingService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWNetworkingService.m; sourceTree = "<group>"; };
+		DA46673120C7821500CAA234 /* JWNetworkingServiceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWNetworkingServiceManager.h; sourceTree = "<group>"; };
+		DA46673220C7821500CAA234 /* JWNetworkingServiceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWNetworkingServiceManager.m; sourceTree = "<group>"; };
+		DA46673420C7822E00CAA234 /* JWNetworkingAccessorDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWNetworkingAccessorDefine.h; sourceTree = "<group>"; };
+		DA46673520C7822E00CAA234 /* JWNetworkingAccessorDefine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWNetworkingAccessorDefine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +93,7 @@
 		DA46670B20C7751500CAA234 /* JWNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				DA46672220C779A300CAA234 /* JWNetworking */,
 				DA46670C20C7751500CAA234 /* AppDelegate.h */,
 				DA46670D20C7751500CAA234 /* AppDelegate.m */,
 				DA46670F20C7751500CAA234 /* ViewController.h */,
@@ -91,6 +103,21 @@
 				DA46671720C7751700CAA234 /* LaunchScreen.storyboard */,
 				DA46671A20C7751700CAA234 /* Info.plist */,
 				DA46671B20C7751700CAA234 /* main.m */,
+			);
+			path = JWNetworking;
+			sourceTree = "<group>";
+		};
+		DA46672220C779A300CAA234 /* JWNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				DA46672620C77A6900CAA234 /* JWNetworking.h */,
+				DA46672A20C780E600CAA234 /* JWNetworkingDefine.h */,
+				DA46672B20C7814700CAA234 /* JWNetworkingService.h */,
+				DA46672C20C7814700CAA234 /* JWNetworkingService.m */,
+				DA46673420C7822E00CAA234 /* JWNetworkingAccessorDefine.h */,
+				DA46673520C7822E00CAA234 /* JWNetworkingAccessorDefine.m */,
+				DA46673120C7821500CAA234 /* JWNetworkingServiceManager.h */,
+				DA46673220C7821500CAA234 /* JWNetworkingServiceManager.m */,
 			);
 			path = JWNetworking;
 			sourceTree = "<group>";
@@ -189,7 +216,10 @@
 			files = (
 				DA46671120C7751500CAA234 /* ViewController.m in Sources */,
 				DA46671C20C7751700CAA234 /* main.m in Sources */,
+				DA46672D20C7814700CAA234 /* JWNetworkingService.m in Sources */,
+				DA46673320C7821500CAA234 /* JWNetworkingServiceManager.m in Sources */,
 				DA46670E20C7751500CAA234 /* AppDelegate.m in Sources */,
+				DA46673620C7822E00CAA234 /* JWNetworkingAccessorDefine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

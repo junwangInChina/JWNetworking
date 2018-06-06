@@ -14,17 +14,21 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - JWTrace (0.0.3)
 
 DEPENDENCIES:
   - AFNetworking (= 3.1.0)
+  - JWTrace
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - JWTrace
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  JWTrace: 6cc5ad0c6c14ac82e58f8451bc14321cd2f21104
 
-PODFILE CHECKSUM: d3c6fa29792131109d5b5db8c6d28ff463ca57e2
+PODFILE CHECKSUM: 8f8cbc16d3840f50fe555587490d24a31e5d8e32
 
 COCOAPODS: 1.5.3
