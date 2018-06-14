@@ -109,6 +109,23 @@ static JWNetworkingService *service;
     if (self.baseServiceArray.count > 0)
     {
         NSArray *tempArray = [NSArray arrayWithArray:self.baseServiceArray];
+        for (NSInteger i = 0; i < tempArray.count; i++)
+        {
+            id tempClass = tempArray[i];
+            if ([tempClass isKindOfClass:[JWNetworkingRequest class]])
+            {
+                JWNetworkingInput *tempInput = (JWNetworkingInput *)[(JWNetworkingRequest *)tempClass requestInput];
+                if ([tempInput.inputDescribution isEqualToString:[(JWNetworkingInput *)object inputDescribution]] &&
+                    [tempInput.requestService isEqualToString:[(JWNetworkingInput *)object requestService]])
+                {
+                    JW_OUTPUT_LOG(OutputLevelDebug, @"重复请求，已拦截");
+                    return;
+                }
+            }
+        }
+
+        /*
+        NSArray *tempArray = [NSArray arrayWithArray:self.baseServiceArray];
         for (JWNetworkingRequest *tempRequest in tempArray)
         {
             JWNetworkingInput *tempInput = (JWNetworkingInput *)tempRequest.requestInput;
@@ -119,6 +136,7 @@ static JWNetworkingService *service;
                 return;
             }
         }
+         */
     }
     
     JWNetworkingRequest *tempRequest = [[JWNetworkingRequest alloc] init];
