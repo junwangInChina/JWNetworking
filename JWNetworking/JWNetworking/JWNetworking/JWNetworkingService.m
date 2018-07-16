@@ -91,7 +91,7 @@ static JWNetworkingService *service;
 - (void)defaultConfig
 {
     self.sessionManager = [AFHTTPSessionManager manager];
-    _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    _sessionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
     _sessionManager.requestSerializer.timeoutInterval = JW_REQUEST_TIME_OUT;
     _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
     // 上传图片，需要加一个text/html类型 HTTPS，需要加一个text/plain类型

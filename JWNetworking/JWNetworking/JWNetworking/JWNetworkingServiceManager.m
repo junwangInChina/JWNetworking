@@ -14,9 +14,12 @@
 
 - (void)sendRequest:(JWNetworkingInput *)input target:(id)target
 {
+    /*
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [[JWNetworkingService shareInstance] requestWithObject:input terget:target];
     });
+     */
+    [[JWNetworkingService shareInstance] requestWithObject:input terget:target];
 }
 
 - (void)cancelAllServiceRelatedWithTarget:(id)target
