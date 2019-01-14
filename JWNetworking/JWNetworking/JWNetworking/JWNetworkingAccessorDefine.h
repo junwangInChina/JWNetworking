@@ -38,6 +38,11 @@
 @property (nonatomic, assign) Class responseClass;
 
 /**
+ *  请求开始时间戳
+ */
+@property (nonatomic, assign) NSTimeInterval requestStartTimeInterval;
+
+/**
  *  传参，子类复写
  *
  *  @return 返回参数字典

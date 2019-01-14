@@ -18,6 +18,9 @@
         self.requestService = @"";
         self.requestMethod = JWNetworkingRequestGET;
         self.responseClass = [JWNetworkingOutput class];
+        
+        NSTimeInterval tempTime = [[NSDate date] timeIntervalSince1970];
+        self.requestStartTimeInterval = tempTime;
     }
     return self;
 }

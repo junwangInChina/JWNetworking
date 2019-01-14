@@ -46,6 +46,11 @@
 #define JW_REQUEST_PARAM                @"JWNetworking_request_param"
 
 /**
+ *  请求耗时
+ */
+#define JW_REQUEST_TIME                @"JWNetworking_request_time"
+
+/**
  *  HTTP 请求返回码
  */
 #define JW_RESULT_CODE                  @"JWNetworking_Result_Code_Key"

@@ -385,6 +385,12 @@ static JWNetworkingService *service;
         // 填充请求参数
         [tempDic setValue:param forKey:JW_REQUEST_PARAM];
         
+        // 获取结束时间
+        NSTimeInterval tempEndTime = [[NSDate date] timeIntervalSince1970];
+        NSTimeInterval tempTime = tempEndTime - [(JWNetworkingInput *)request.requestInput requestStartTimeInterval];
+        // 填充请求耗时
+        [tempDic setValue:[NSString stringWithFormat:@"请求耗时:%.0f毫秒",tempTime*1000] forKey:JW_REQUEST_TIME];
+        
         JW_OUTPUT_LOG(OutputLevelDebug, @"请求信息 :%@",tempDic);
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -442,6 +448,13 @@ static JWNetworkingService *service;
             output.resultCode = @"10010";
             output.resultMessage = @"请求失败，请重试";
         }
+        
+        // 获取结束时间
+        NSTimeInterval tempEndTime = [[NSDate date] timeIntervalSince1970];
+        NSTimeInterval tempTime = tempEndTime - [(JWNetworkingInput *)request.requestInput requestStartTimeInterval];
+        // 填充请求耗时
+        [tempDic setValue:[NSString stringWithFormat:@"请求耗时:%.0f毫秒",tempTime*1000] forKey:JW_REQUEST_TIME];
+        
         // 填充Output
         [tempDic setValue:output forKey:JW_REQUEST_OUTPUT];
         
