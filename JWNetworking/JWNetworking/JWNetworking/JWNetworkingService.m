@@ -157,7 +157,11 @@ static JWNetworkingService *service;
     {
         for (NSString *tempKey in self.paramDic.allKeys)
         {
-            [tempParam setValue:self.paramDic[tempKey] forKey:tempKey];
+            // 如果单独接口配置的参数与通用参数重复，以单个接口为主
+            if (![[tempParam allKeys] containsObject:tempKey])
+            {
+                [tempParam setValue:self.paramDic[tempKey] forKey:tempKey];
+            }
         }
     }
     // 图片数据
@@ -170,7 +174,11 @@ static JWNetworkingService *service;
     {
         for (NSString *tempKey in self.headerDic.allKeys)
         {
-            [tempHeader setValue:self.headerDic[tempKey] forKey:tempKey];
+            // 如果单独接口配置的头域与通用头域重复，以单个接口为主
+            if (![[tempHeader allKeys] containsObject:tempKey])
+            {
+                [tempHeader setValue:self.headerDic[tempKey] forKey:tempKey];
+            }
         }
     }
     if (tempHeader && tempHeader.count > 0)
