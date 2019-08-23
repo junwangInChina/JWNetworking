@@ -230,9 +230,11 @@ static JWNetworkingService *service;
         {
             if (tempData)
             {
+                // 图片字段名称
+                NSString *tempImageName = [(JWNetworkingInput *)object paramForImageName];
                 tempTask = [self.sessionManager POST:tempFullURL parameters:tempParam constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                     
-                    [formData appendPartWithFileData:tempData name:@"imgFile" fileName:@"upload.jpg" mimeType:@"image/jpeg"];
+                    [formData appendPartWithFileData:tempData name:tempImageName fileName:@"upload.jpg" mimeType:@"image/jpeg"];
                     
                 } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                     

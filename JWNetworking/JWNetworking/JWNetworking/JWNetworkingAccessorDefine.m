@@ -44,6 +44,11 @@
     return nil;
 }
 
+- (NSString *)paramForImageName
+{
+    return @"imgFile";
+}
+
 - (NSString *)inputDescribution
 {
     NSMutableString *tempStr = [[NSMutableString alloc] initWithString:self.requestAction];

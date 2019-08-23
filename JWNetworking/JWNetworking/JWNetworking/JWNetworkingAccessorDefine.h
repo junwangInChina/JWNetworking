@@ -64,6 +64,13 @@
 - (NSData *)paramForImageData;
 
 /**
+ *  上传图片的字段名
+ *
+ *  @return 返回该字段名
+ */
+- (NSString *)paramForImageName;
+
+/**
  描述方法
  
  @return 返回描述信息
