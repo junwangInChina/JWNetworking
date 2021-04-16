@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "JWNetworking"
-  s.version      = "0.1.2"
+  s.version      = "0.1.3"
   s.summary      = "JWNetworking--自用的一款网络库，基于AFNetworking的二次封装"
 
   #主页
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
 
   #作者
-  s.author       = { "wangjun" => "github_work@163.com" }
+  s.author       = { "wangjun" => "578382239@qq.com" }
   #支持版本
   s.platform     = :ios, "8.1"
   #版本地址
