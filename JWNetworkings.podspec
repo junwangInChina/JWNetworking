@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
 
-  s.name         = "JWNetworking"
+  s.name         = "JWNetworkings"
   s.version      = "0.1.3"
   s.summary      = "JWNetworking--自用的一款网络库，基于AFNetworking的二次封装"
 
