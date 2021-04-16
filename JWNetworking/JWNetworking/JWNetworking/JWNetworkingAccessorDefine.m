@@ -21,6 +21,9 @@
         
         NSTimeInterval tempTime = [[NSDate date] timeIntervalSince1970];
         self.requestStartTimeInterval = tempTime;
+        
+        self.requestMaxRepeatCount = 3;
+        self.requestNowRepearCount = 0;
     }
     return self;
 }

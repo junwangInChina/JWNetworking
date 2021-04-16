@@ -442,21 +442,35 @@ static JWNetworkingService *service;
         
         Class outputClass = [(JWNetworkingInput *)[request requestInput] responseClass];
         JWNetworkingOutput *output = [[outputClass alloc] parseResponseObject:nil];
+        NSString *tempHttpCode = @"10010";
         if (error)
         {
+            tempHttpCode = [NSString stringWithFormat:@"%ld",(long)error.code];
             // 填充返回码
-            [tempDic setValue:[NSString stringWithFormat:@"%ld",(long)error.code] forKey:JW_RESULT_CODE];
+            [tempDic setValue:tempHttpCode forKey:JW_RESULT_CODE];
             
             // 填充返回提示语
             [tempDic setValue:error forKey:JW_RESULT_MESSAGE];
             
-            output.resultCode = [NSString stringWithFormat:@"%ld",(long)error.code];
+            output.resultCode = tempHttpCode;
             output.resultMessage = @"服务器或网络问题，请检查后重试";//[NSString stringWithFormat:@"%@",error.description];
         }
         else
         {
             output.resultCode = @"10010";
             output.resultMessage = @"请求失败，请重试";
+        }
+        
+        // 需要重试，且可重试时
+        if ([request.requestInput requestMaxRepeatCount] > [request.requestInput requestNowRepearCount])
+        {
+            // 填充返回码
+            [tempDic setValue:JW_REQUEST_REPEAT_CODE forKey:JW_RESULT_CODE];
+            // 填充返回提示语
+            [tempDic setValue:@"请求自动重试中" forKey:JW_RESULT_MESSAGE];
+            
+            output.resultCode = JW_REQUEST_REPEAT_CODE;
+            output.resultMessage = @"请求自动重试中";
         }
         
         // 获取结束时间
@@ -472,7 +486,7 @@ static JWNetworkingService *service;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // 通用的错误处理流程
-            JWNetworkingCommonErrorHandler tempErrorHandler = [self.errorHandlerDic objectForKey:output.resultCode];
+            JWNetworkingCommonErrorHandler tempErrorHandler = [self.errorHandlerDic objectForKey:tempHttpCode];
             if (tempErrorHandler)
             {
                 tempErrorHandler(tempDic);

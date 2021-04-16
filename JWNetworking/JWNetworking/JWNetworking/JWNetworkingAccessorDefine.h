@@ -42,6 +42,14 @@
  */
 @property (nonatomic, assign) NSTimeInterval requestStartTimeInterval;
 
+/// 接口最大重试次数 default 0 (暂时用于连接不上服务器，自动更换域名后自动重试接口的场景)
+@property (nonatomic, assign) NSInteger requestMaxRepeatCount;
+
+/// 接口已重试次数 
+@property (nonatomic, assign) NSInteger requestNowRepearCount;
+
+
+
 /**
  *  传参，子类复写
  *

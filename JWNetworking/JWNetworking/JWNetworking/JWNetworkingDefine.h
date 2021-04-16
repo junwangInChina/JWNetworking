@@ -26,6 +26,11 @@
 #define JW_REQUEST_PAGE_SIZE            20
 
 /**
+ *  重试请求 (暂时用于连接不上服务器，自动更换域名后自动重试接口的场景)
+ */
+#define JW_REQUEST_REPEAT_CODE          @"90909"
+
+/**
  *  响应回调中的input对象对应的key值
  */
 #define JW_REQUEST_INPUT                @"JWNetworking_Request_Input_Key"
