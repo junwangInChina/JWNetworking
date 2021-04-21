@@ -28,7 +28,12 @@
 /**
  *  重试请求 (暂时用于连接不上服务器，自动更换域名后自动重试接口的场景)
  */
-#define JW_REQUEST_REPEAT_CODE          @"90909"
+#define JW_REQUEST_RETRY_CODE          @"90909"
+
+/**
+ *  重复请求
+ */
+#define JW_REQUEST_REPEAT_CODE         @"90908"
 
 /**
  *  响应回调中的input对象对应的key值

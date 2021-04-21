@@ -119,6 +119,9 @@ static JWNetworkingService *service;
                     [tempInput.requestService isEqualToString:[(JWNetworkingInput *)object requestService]])
                 {
                     JW_OUTPUT_LOG(OutputLevelDebug, @"重复请求，已拦截");
+                    
+                    [self requestDidRepeat:tempClass];
+                    
                     return;
                 }
             }
@@ -503,6 +506,54 @@ static JWNetworkingService *service;
                 // 移除请求
                 [self cancelRequestWithRequest:request];
             });
+        });
+    });
+}
+
+- (void)requestDidRepeat:(JWNetworkingRequest *)request
+{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        NSMutableDictionary *tempDic = [NSMutableDictionary dictionary];
+        
+        // 处理服务器地址
+        NSString *tempService = [(JWNetworkingInput *)request.requestInput requestService];
+        tempService = [self urlCheck:tempService];
+        // 请求完整的URL
+        NSString *tempFullURL = [NSString stringWithFormat:@"%@%@",tempService,[(JWNetworkingInput *)request.requestInput requestAction]];
+        // 请求参数
+        NSMutableDictionary *tempParam = [(JWNetworkingInput *)request.requestInput paramDicForRequest];
+        
+        // 填充input
+        [tempDic setValue:request.requestInput forKey:JW_REQUEST_INPUT];
+        // 填充完整请求URL
+        [tempDic setValue:tempFullURL forKey:JW_REQUEST_FULL_URL];
+        // 填充请求参数
+        [tempDic setValue:tempParam forKey:JW_REQUEST_PARAM];
+        
+        Class outputClass = [(JWNetworkingInput *)[request requestInput] responseClass];
+        JWNetworkingOutput *output = [[outputClass alloc] parseResponseObject:nil];
+        output.resultCode = JW_REQUEST_REPEAT_CODE;
+        output.resultMessage = @"相同已发送，拦截当前已重复请求";
+        
+        // 获取结束时间
+        NSTimeInterval tempEndTime = [[NSDate date] timeIntervalSince1970];
+        NSTimeInterval tempTime = tempEndTime - [(JWNetworkingInput *)request.requestInput requestStartTimeInterval];
+        // 填充请求耗时
+        [tempDic setValue:[NSString stringWithFormat:@"请求耗时:%.0f毫秒",tempTime*1000] forKey:JW_REQUEST_TIME];
+        
+        // 填充Output
+        [tempDic setValue:output forKey:JW_REQUEST_OUTPUT];
+        
+        JW_OUTPUT_LOG(OutputLevelDebug, @"请求信息 :%@",tempDic);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            // 回调操作
+            if ([(JWNetworkingInput *)request.requestInput callback])
+            {
+                ((JWNetworkingInput *)request.requestInput).callback(tempDic);
+            }
         });
     });
 }
