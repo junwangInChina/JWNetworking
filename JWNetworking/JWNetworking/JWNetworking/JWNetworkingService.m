@@ -468,11 +468,11 @@ static JWNetworkingService *service;
         if ([request.requestInput requestMaxRepeatCount] > [request.requestInput requestNowRepearCount])
         {
             // 填充返回码
-            [tempDic setValue:JW_REQUEST_REPEAT_CODE forKey:JW_RESULT_CODE];
+            [tempDic setValue:JW_REQUEST_RETRY_CODE forKey:JW_RESULT_CODE];
             // 填充返回提示语
             [tempDic setValue:@"请求自动重试中" forKey:JW_RESULT_MESSAGE];
             
-            output.resultCode = JW_REQUEST_REPEAT_CODE;
+            output.resultCode = JW_REQUEST_RETRY_CODE;
             output.resultMessage = @"请求自动重试中";
         }
         
