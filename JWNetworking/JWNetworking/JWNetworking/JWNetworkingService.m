@@ -464,6 +464,9 @@ static JWNetworkingService *service;
             output.resultMessage = @"请求失败，请重试";
         }
         
+        // 设置HttpCode
+        [tempDic setValue:tempHttpCode forKey:JW_HTTP_CODE];
+        
         // 需要重试，且可重试时
         if ([request.requestInput requestMaxRepeatCount] > [request.requestInput requestNowRepearCount])
         {

@@ -65,6 +65,8 @@
  */
 #define JW_RESULT_CODE                  @"JWNetworking_Result_Code_Key"
 
+#define JW_HTTP_CODE                  @"JWNetworking_Http_Code_Key"
+
 /**
  *  HTTP 请求返回信息
  */
