@@ -10,7 +10,7 @@
 
 #import "JWNetworkingAccessorDefine.h"
 
-#import <AFNetworking/AFNetworking.h>
+#import <AFNetworking/AFHTTPSessionManager.h>
 #import <JWTrace/JWTrace.h>
 
 #pragma mark - JWNetworkingRequest ---
