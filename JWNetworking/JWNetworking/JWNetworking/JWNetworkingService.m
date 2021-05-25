@@ -218,14 +218,10 @@ static JWNetworkingService *service;
     switch (method) {
         case JWNetworkingRequestGET:
         {
-            tempTask = [self.sessionManager GET:tempFullURL parameters:tempParam progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                
+            tempTask = [self.sessionManager GET:tempFullURL parameters:tempParam headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 [this requestDidFinished:tempRequest response:responseObject url:task.currentRequest.URL.absoluteString param:tempParam];
-                
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                
                 [this requestDidFailed:tempRequest url:task.currentRequest.URL.absoluteString param:tempParam error:error];
-                
             }];
         }
             break;
@@ -235,7 +231,7 @@ static JWNetworkingService *service;
             {
                 // 图片字段名称
                 NSString *tempImageName = [(JWNetworkingInput *)object paramForImageName];
-                tempTask = [self.sessionManager POST:tempFullURL parameters:tempParam constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+                tempTask = [self.sessionManager POST:tempFullURL parameters:tempParam headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                     
                     [formData appendPartWithFileData:tempData name:tempImageName fileName:@"upload.jpg" mimeType:@"image/jpeg"];
                     
@@ -251,7 +247,7 @@ static JWNetworkingService *service;
             }
             else
             {
-                tempTask = [self.sessionManager POST:tempFullURL parameters:tempParam progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                tempTask = [self.sessionManager POST:tempFullURL parameters:tempParam headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                    
                     [this requestDidFinished:tempRequest response:responseObject url:task.currentRequest.URL.absoluteString param:tempParam];
                     
@@ -265,7 +261,7 @@ static JWNetworkingService *service;
             break;
         case JWNetworkingRequestPUT:
         {
-            tempTask = [self.sessionManager PUT:tempFullURL parameters:tempParam success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            tempTask = [self.sessionManager PUT:tempFullURL parameters:tempParam headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                
                 [this requestDidFinished:tempRequest response:responseObject url:task.currentRequest.URL.absoluteString param:tempParam];
                 
@@ -278,7 +274,7 @@ static JWNetworkingService *service;
             break;
         case JWNetworkingRequestDELETE:
         {
-            tempTask = [self.sessionManager DELETE:tempFullURL parameters:tempParam success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            tempTask = [self.sessionManager DELETE:tempFullURL parameters:tempParam headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 
                 [this requestDidFinished:tempRequest response:responseObject url:task.currentRequest.URL.absoluteString param:tempParam];
                 

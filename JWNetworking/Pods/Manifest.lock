@@ -1,18 +1,23 @@
 PODS:
-  - AFNetworking/NSURLSession (3.1.0):
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
   - JWTrace (0.1.6)
 
 DEPENDENCIES:
-  - AFNetworking/NSURLSession (= 3.1.0)
-  - AFNetworking/Reachability (= 3.1.0)
-  - AFNetworking/Security (= 3.1.0)
-  - AFNetworking/Serialization (= 3.1.0)
+  - AFNetworking
   - JWTrace
 
 SPEC REPOS:
@@ -21,9 +26,9 @@ SPEC REPOS:
     - JWTrace
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   JWTrace: bfdd270b2e05ed3a0a5654a54e09c43ab441adc9
 
-PODFILE CHECKSUM: 4a74cbfb19f8238ec67f02722cb6b895ff57fbb3
+PODFILE CHECKSUM: eaf8e2cb04f0283e34ec1ab90bd89fea2d4a351f
 
 COCOAPODS: 1.10.0

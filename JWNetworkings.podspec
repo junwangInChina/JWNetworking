@@ -3,8 +3,8 @@
 Pod::Spec.new do |s|
 
   s.name         = "JWNetworkings"
-  s.version      = "0.1.7"
-  s.summary      = "JWNetworking--自用的一款网络库，基于AFNetworking的二次封装"
+  s.version      = "0.1.8"
+  s.summary      = "JWNetworkings--自用的一款网络库，基于AFNetworking的二次封装"
 
   #主页
   s.homepage     = "https://github.com/junwangInChina/JWNetworking"
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   #作者
   s.author       = { "wangjun" => "578382239@qq.com" }
   #支持版本
-  s.platform     = :ios, "8.1"
+  s.platform     = :ios, "9.1"
   #版本地址
   s.source       = { :git => "https://github.com/junwangInChina/JWNetworking.git", :tag => s.version }
 
